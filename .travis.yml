@@ -1,5 +1,6 @@
 language: java
 jdk: oraclejdk9
+dist: trusty
 install: mvn clean
 script:
   - jdk_switcher use oraclejdk9 
