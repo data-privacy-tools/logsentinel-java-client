@@ -28,6 +28,12 @@ public class LogSentinelClientBuilder {
                 .setOrganizationId(organizationId)
                 .setSecret(secret);
     }
+    
+public static LogSentinelClientBuilder createAdminBuilder(String organizationId, String secret) {
+        LogSentinelClientBuilder builder = new LogSentinelClientBuilder();
+        return builder.setOrganizationId(organizationId)
+                .setSecret(secret);
+    }    
 
     public LogSentinelClient build() {
         ApiClient apiClient = new ApiClient();
@@ -60,9 +66,10 @@ public class LogSentinelClientBuilder {
         ManageApplicationControllerApi applicationActions = new ManageApplicationControllerApi(apiClient);
         AuditLogSearchControllerApi searchActions = new AuditLogSearchControllerApi(apiClient);
         ApiVerificationControllerApi verificationActions = new ApiVerificationControllerApi(apiClient);
+        PartnerControllerApi partnerActions=new PartnerControllerApi(apiClient);
 
         LogSentinelClient client = new LogSentinelClient(auditLogActions, hashActions, userActions,
-                applicationActions, searchActions, verificationActions);
+                applicationActions, searchActions, verificationActions,partnerActions);
         return client;
     }
 
